@@ -1,0 +1,21 @@
+contract LiquidityCalculator {
+
+  event LiquidityCalculated(uint256 liquidity);
+
+  function calculateLiquidity(
+    uint256 token0Amount,
+    uint256 token1Amount,
+    uint256 token0Price,
+    uint256 token1Price
+  ) public returns (uint256 liquidity) {
+
+    uint256 totalValue = token0Amount * token0Price + token1Amount * token1Price;
+
+    liquidity = totalValue / 2;
+
+    // 
+    emit LiquidityCalculated(liquidity);
+
+    return liquidity;
+  }
+}
